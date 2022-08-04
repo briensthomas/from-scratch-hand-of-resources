@@ -17,6 +17,17 @@ describe('backend-express-template routes', () => {
       grind_type: 'Med. Fine to Coarse',
       time: '2-3 Minutes'
     });
+
+    it('#GET /coffee/:id should return a specific coffee', async () => {
+      const res = await request(app).get('/coffee/3');
+      expect(res.status).toBe(200);
+      expect(res.body).toEqual({
+        id: expect.any(String),
+        name: expect.any(String),
+        grind_type: expect.any(String),
+        time: expect.any(String)
+      });
+    });
   });
   afterAll(() => {
     pool.end();
