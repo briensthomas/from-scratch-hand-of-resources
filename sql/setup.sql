@@ -2,6 +2,7 @@
 -- The SQL in this file will be executed when you run `npm run setup-db`
 DROP TABLE IF EXISTS donuts;
 DROP TABLE IF EXISTS coffee;
+DROP TABLE IF EXISTS energy_drinks;
 
 CREATE TABLE donuts (
     id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
@@ -39,3 +40,21 @@ VALUES
 ('French Press', 'Coarse', '5 Minutes'),
 ('AeroPress', 'Fine to Medium', '2-3 Minutes'),
 ('Moka Pot', 'Fine to Med. Coarse', '5 Minutes');
+
+CREATE TABLE energy_drinks (
+    id BIGINT GENERATED ALWAYS AS IDENTITY,
+    name VARCHAR,
+    flavor VARCHAR,
+    rating INT
+);
+INSERT INTO energy_drinks (
+    name,
+    flavor,
+    rating
+)
+VALUES
+('Monster Energy Drink', 'Original', '5'),
+('Rockstar', 'Original', '5'),
+('Red Bull', 'Original', '5'),
+('Monster Energy Drink', 'Gronkster', '10'),
+('Red Line', 'Regular', '10')
