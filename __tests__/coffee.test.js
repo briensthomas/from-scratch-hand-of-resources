@@ -44,6 +44,14 @@ describe('backend-express-template routes', () => {
     });
   });
 
+  it('#PUT /coffee should modify an already existing row within the coffee table', async () => {
+    const res = await request(app).put('/coffee/2').send({
+      time: '5 Minutes'
+    });
+    expect(res.status).toBe(200);
+    expect(res.body.time).toBe('5 Minutes');
+  });
+
   
   afterAll(() => {
     pool.end();
