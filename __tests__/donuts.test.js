@@ -49,6 +49,13 @@ describe('backend-express-template routes', () => {
     expect(res.body.ingredients).toBe('Fudge, Cake, and Sprinkles');
   });
   
+  it('#DELETE /donuts/:id should delete a donut', async () => {
+    const res = await request(app).delete('/donuts/6');
+    expect(res.status).toBe(200);
+
+    const deleteResponse = await request(app).get('/donuts/6');
+    expect(deleteResponse.status).toBe(404);
+  });
   afterAll(() => {
     pool.end();
   });
