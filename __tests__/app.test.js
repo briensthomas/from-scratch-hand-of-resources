@@ -7,13 +7,8 @@ describe('backend-express-template routes', () => {
   beforeEach(() => {
     return setup(pool);
   });
-  it('#GET /coffee route should return a list of coffee methods', async () => {
-    const res = await request(app).get('/coffee');
-    expect(res.status).toBe(200);
-    expect(res.body.length).toBe(5);
-    expect(res.body[0]).toEqual({
-        
-    });
+  it('example test - delete me!', () => {
+    expect(1).toEqual(1);
   });
   afterAll(() => {
     pool.end();
