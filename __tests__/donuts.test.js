@@ -17,7 +17,19 @@ describe('backend-express-template routes', () => {
       ingredients: expect.any(String)
     });
   });
-
+  
+  it('#POST /donuts should add a new donut object', async () => {
+    const newDonut = {
+      name: 'The Sundae',
+      ingredients: 'Fudge Glaze, Chocolate Cake Chunks, Sprinkles, Waffle Cone Pieces'
+    };
+    const res = await request(app).post('/donuts').send(newDonut);
+    expect(res.status).toBe(200);
+    expect(res.body).toEqual({
+      id: expect.any(String),
+      ...newDonut
+    });
+  });
   
   afterAll(() => {
     pool.end();
