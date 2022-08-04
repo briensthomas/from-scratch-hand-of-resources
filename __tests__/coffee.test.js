@@ -12,7 +12,10 @@ describe('backend-express-template routes', () => {
     expect(res.status).toBe(200);
     expect(res.body.length).toBe(5);
     expect(res.body[0]).toEqual({
-        
+      id: expect.any(String),
+      name: 'Pour Over - Coffee Cone',
+      grind_type: 'Med. Fine to Coarse',
+      time: '2-3 Minutes'
     });
   });
   afterAll(() => {
