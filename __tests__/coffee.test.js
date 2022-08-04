@@ -53,11 +53,15 @@ describe('backend-express-template routes', () => {
   });
 
   it('#DELETE /coffee/:id should delete an existing coffee row by id', async () => {
-    const res = await request(app).delete('/coffee/5');
-    expect(res.status).toBe(200);
+    const get = await request(app).get('/coffee');  
+    expect(get.body.length).toBe(5);
+    
+    const deleteRes = await request(app).delete('/coffee/5');
+    expect(deleteRes.status).toBe(200);
+    console.log('console log', deleteRes.body);
 
-    const deleteResponse = await request(app).get('/coffee/5');
-    expect(deleteResponse.status).toBe(404);
+    const newGet = await request(app).get('/coffee');  
+    expect(newGet.body.length).toBe(4);
   });
   afterAll(() => {
     pool.end();
