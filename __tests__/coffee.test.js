@@ -18,7 +18,7 @@ describe('backend-express-template routes', () => {
       time: '2-3 Minutes'
     });
   });
-  
+
   it('#GET /coffee/:id should return a specific coffee', async () => {
     const res = await request(app).get('/coffee/3');
     expect(res.status).toBe(200);
@@ -29,6 +29,22 @@ describe('backend-express-template routes', () => {
       time: expect.any(String)
     });
   });
+
+  it('#POST /coffee should be able to receive a coffee object', async () => {
+    const newCoffee = {
+      name: 'Japanese Style Iced Coffee',
+      grind_type: 'Med. Coarse',
+      time: '5 Minutes'
+    };
+    const res = await request(app).post('/coffee').send(newCoffee);
+    expect(res.status).toBe(200);
+    expect(res.body).toEqual({
+      id: expect.any(String),
+      ...newCoffee
+    });
+  });
+
+  
   afterAll(() => {
     pool.end();
   });
