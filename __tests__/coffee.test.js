@@ -52,7 +52,13 @@ describe('backend-express-template routes', () => {
     expect(res.body.time).toBe('5 Minutes');
   });
 
-  
+  it('#DELETE /coffee/:id should delete an existing coffee row by id', async () => {
+    const res = await request(app).delete('/coffee/5');
+    expect(res.status).toBe(200);
+
+    const deleteResponse = await request(app).get('/coffee/5');
+    expect(deleteResponse.status).toBe(404);
+  });
   afterAll(() => {
     pool.end();
   });
