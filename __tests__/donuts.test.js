@@ -17,13 +17,14 @@ describe('backend-express-template routes', () => {
       ingredients: expect.any(String)
     });
   });
+
   it('#GET /donuts/:id should return a specific donuts details', async () => {
     const res = await request(app).get('/donuts/1');
     expect(res.status).toBe(200);
-    expect(res.body[0]).toEqual({
-      id: expect.any(String),
-      name: expect.any(String),
-      ingredients: expect.any(String)
+    expect(res.body).toEqual({
+      id: '1',
+      name: 'Tiramisu Filled',
+      ingredients: 'Coffee Glaze, Cream Filling, Cocoa Powder'
     });
   });
 
