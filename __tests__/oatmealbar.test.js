@@ -18,6 +18,15 @@ describe('backend-express-template routes', () => {
     });
   });
 
+  it('#GET /oatmealbar/:id should return a specific ingredient', async () => {
+    const res = await request(app).get('/oatmealbar/3');
+    expect(res.status).toBe(200);
+    expect(res.body).toEqual({
+      id: expect.any(String),
+      ingredient: expect.any(String),
+      amount: expect.any(String)
+    });
+  });
   
   afterAll(() => {
     pool.end();
