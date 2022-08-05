@@ -56,4 +56,12 @@ describe('backend-express-template routes', () => {
   afterAll(() => {
     pool.end();
   });
+
+  it('#DELETE /energy/:id should delete a row from the table by id', async () => {
+    const res = await request(app).delete('/energy/1');
+    expect(res.status).toBe(200);
+
+    const deleteRes = await request(app).get('/energy/1');
+    expect(deleteRes.status).toBe(404);
+  });
 });
