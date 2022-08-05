@@ -58,10 +58,14 @@ describe('backend-express-template routes', () => {
   });
 
   it('#DELETE /energy/:id should delete a row from the table by id', async () => {
-    const res = await request(app).delete('/energy/1');
-    expect(res.status).toBe(200);
+    const get = await request(app).get('/energy');
+    expect(get.body.length).toBe(5);
+    
+    const deleteRes = await request(app).delete('/energy/1');
+    expect(deleteRes.status).toBe(200);
 
-    const deleteRes = await request(app).get('/energy/1');
-    expect(deleteRes.status).toBe(404);
+    const newGet = await request(app).get('/energy');
+    expect(newGet.body.length).toBe(4);
+
   });
 });
