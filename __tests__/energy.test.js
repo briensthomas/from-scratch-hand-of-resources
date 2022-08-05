@@ -29,6 +29,22 @@ describe('backend-express-template routes', () => {
       rating: expect.any(Number)  
     });
   });
+
+  it('#POST /energy should add a new energy_drink object to the table', async () => {
+    const newEnergy = {
+      name: 'Bang Energy',
+      flavor: 'Cotton Candy',
+      rating: 5
+    };
+    const res = await request(app).post('/energy').send(newEnergy);
+    expect(res.status).toBe(200);
+    expect(res.body).toEqual({
+      id: expect.any(String),
+      ...newEnergy
+    });
+  });
+
+  
   afterAll(() => {
     pool.end();
   });
