@@ -17,6 +17,16 @@ describe('backend-express-template routes', () => {
       amount: expect.any(String)
     });
   });
+
+  it('#GET /smoothie/:id should return information for a specific smoothie', async () => {
+    const res = await request(app).get('/smoothie/2');
+    expect(res.status).toBe(200);
+    expect(res.body).toEqual({
+      id: expect.any(String),
+      name: 'Whey Protein (Vanilla)',
+      amount: '1 Scoop'
+    });
+  });
   afterAll(() => {
     pool.end();
   });
