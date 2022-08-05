@@ -27,6 +27,21 @@ describe('backend-express-template routes', () => {
       amount: expect.any(String)
     });
   });
+
+  it('#POST /oatmealbar should add a new row to the table', async () => {
+    const newOatmeal = {
+      ingredient: 'Vanilla Extract',
+      amount: '1 tsp'
+    };
+    const res = await request(app).post('/oatmealbar').send(newOatmeal);
+    expect(res.status).toBe(200);
+    expect(res.body).toEqual({
+      id: expect.any(String),
+      ...newOatmeal
+    });
+  });
+
+  
   
   afterAll(() => {
     pool.end();
