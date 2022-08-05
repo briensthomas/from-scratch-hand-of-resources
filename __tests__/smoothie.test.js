@@ -39,17 +39,19 @@ describe('backend-express-template routes', () => {
       id: expect.any(String),
       ...newSmoothie
     });
-
-    it('#PUT /smoothie/:id should update the values for an ingredient', async () => {
-      const res = await request(app).put('/smoothie/2').send({
-        name: 'Collagen Protein',
-        amount: '1 Scoop'
-      });
-      expect(res.status).toBe(200);
-      expect(res.body.name).toBe('Collagen Protein');
-      expect(res.body.amount).toBe('1 Scoop');
-    });
   });
+
+  it('#PUT /smoothie/:id should update the values for an ingredient', async () => {
+    const res = await request(app).put('/smoothie/2').send({
+      name: 'Collagen Protein',
+      amount: '1 Scoop'
+    });
+    expect(res.status).toBe(200);
+    expect(res.body.name).toBe('Collagen Protein');
+    expect(res.body.amount).toBe('1 Scoop');
+  });
+
+  
   afterAll(() => {
     pool.end();
   });
