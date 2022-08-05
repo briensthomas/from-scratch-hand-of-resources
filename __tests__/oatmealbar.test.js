@@ -41,7 +41,13 @@ describe('backend-express-template routes', () => {
     });
   });
 
-  
+  it('#PUT /oatmealbar/:id should update the table values', async () => {
+    const res = await request(app).put('/oatmealbar/4').send({
+      ingredient: 'Blackberries'
+    });
+    expect(res.status).toBe(200);
+    expect(res.body.ingredient).toBe('Blackberries');
+  });
   
   afterAll(() => {
     pool.end();
