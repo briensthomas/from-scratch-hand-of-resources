@@ -27,6 +27,19 @@ describe('backend-express-template routes', () => {
       amount: '1 Scoop'
     });
   });
+
+  it('#POST /smoothie should add a new smoothie object', async () => {
+    const newSmoothie = {
+      name: 'Kale',
+      amount: '1 Leaf'
+    };
+    const res = await await request(app).post('/smoothie').send(newSmoothie);
+    expect(res.status).toBe(200);
+    expect(res.body).toEqual({
+      id: expect.any(String),
+      ...newSmoothie
+    });
+  });
   afterAll(() => {
     pool.end();
   });
