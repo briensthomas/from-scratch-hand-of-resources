@@ -51,6 +51,16 @@ describe('backend-express-template routes', () => {
     expect(res.body.amount).toBe('1 Scoop');
   });
 
+  it('#DELETE /smoothie/:id should delete a row from the smoothie table', async () => {
+    const get = await request(app).get('/smoothie');
+    expect(get.body.length).toBe(6);
+
+    const deleteRes = await request(app).delete('/smoothie/2');
+    expect(deleteRes.status).toBe(200);
+
+    const newGet = await request(app).get('/smoothie');  
+    expect(newGet.body.length).toBe(5);
+  });
   
   afterAll(() => {
     pool.end();
