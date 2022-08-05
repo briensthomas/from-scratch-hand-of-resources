@@ -4,6 +4,7 @@ DROP TABLE IF EXISTS donuts;
 DROP TABLE IF EXISTS coffee;
 DROP TABLE IF EXISTS energy_drinks;
 DROP TABLE IF EXISTS smoothie_ingredients;
+DROP TABLE IF EXISTS oatmeal_bar;
 
 CREATE TABLE donuts (
     id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
@@ -76,3 +77,18 @@ VALUES
 ('Raspberries (Frozen)', '1/2 Cup'),
 ('Blueberries (Frozen)', '1/2 Cup'),
 ('Oat Milk', '~4 Oz');
+
+CREATE TABLE oatmeal_bar (
+    id BIGINT GENERATED ALWAYS AS IDENTITY,
+    ingredient VARCHAR,
+    amount VARCHAR
+);
+INSERT INTO oatmeal_bar (
+    ingredient,
+    amount
+)
+VALUES
+('Bananas (Mashed)', '3-4 Bananas'),
+('Maple Syrup', '1/4 Cup'),
+('Peanut Butter', '1/2 Cup'),
+('Old-Fashioned Oats', '2 1/2 Cups');
