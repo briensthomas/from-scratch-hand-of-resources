@@ -3,6 +3,7 @@
 DROP TABLE IF EXISTS donuts;
 DROP TABLE IF EXISTS coffee;
 DROP TABLE IF EXISTS energy_drinks;
+DROP TABLE IF EXISTS smoothie_ingredients;
 
 CREATE TABLE donuts (
     id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
@@ -57,4 +58,21 @@ VALUES
 ('Rockstar', 'Original', '5'),
 ('Red Bull', 'Original', '5'),
 ('Monster Energy Drink', 'Gronkster', '10'),
-('Red Line', 'Regular', '10')
+('Red Line', 'Regular', '10');
+
+CREATE TABLE smoothie_ingredients (
+    id BIGINT GENERATED ALWAYS AS IDENTITY,
+    name VARCHAR,
+    amount VARCHAR
+);
+INSERT INTO smoothie_ingredients (
+    name,
+    amount
+)
+VALUES 
+('Old Fashioned Oats', '1/4 Cup'),
+('Whey Protein (Vanilla)', '1 Scoop'),
+('Yogurt (Strawberry, Low-Fat', '1/2 Cup'),
+('Raspberries (Frozen)', '1/2 Cup'),
+('Blueberries (Frozen)', '1/2 Cup'),
+('Oat Milk', '~4 Oz');
