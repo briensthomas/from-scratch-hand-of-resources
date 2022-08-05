@@ -49,6 +49,17 @@ describe('backend-express-template routes', () => {
     expect(res.body.ingredient).toBe('Blackberries');
   });
   
+  it('#DELETE /oatmealbar/:id should delete the row from the database', async () => {
+    const get = await request(app).get('/oatmealbar');  
+    expect(get.body.length).toBe(6);
+
+    const deleteRes = await request(app).delete('/oatmealbar/5');
+    expect(deleteRes.status).toBe(200);
+
+    const newGet = await request(app).get('/oatmealbar');  
+    expect(newGet.body.length).toBe(5);
+  });
+  
   afterAll(() => {
     pool.end();
   });
