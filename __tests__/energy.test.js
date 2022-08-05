@@ -45,9 +45,9 @@ describe('backend-express-template routes', () => {
   });
 
   it('#PUT /energy/:id should update a row on the table by id', async () => {
-    const res = await request(app).put('/energy/1').send({
+    const res = await request(app).put('/energy/2').send({
       flavor: 'Green',
-      rating: 10
+      rating: 10,
     });
     expect(res.status).toBe(200);
     expect(res.body.flavor).toBe('Green');
